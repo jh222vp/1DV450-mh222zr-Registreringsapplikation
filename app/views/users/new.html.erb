@@ -1,9 +1,9 @@
-<h1>Sign Up</h1>
+<h2>Sign Up</h2>
 
 <%= form_for @user do |f| %>
 	<% if @user.errors.any? %>
-		<div class="error_messages">
-			<h2>Form is invalid</h2>
+		<div class="flash alert">
+			<p><strong>Oops.</strong> Please correct the following errors:</p>
 			<ul>
 				<% for message in @user.errors.full_messages %>
 					<li><%= message %></li>
@@ -11,17 +11,17 @@
 			</ul>
 		</div>
 	<% end %>
-	<div class="field">
-		<%= f.label :email %>
+	<p>
+		<%= f.label :email %><br>
 		<%= f.text_field :email %>
-	</div>
-	<div class="field">
-		<%= f.label :password %>
+	</p>
+	<p>
+		<%= f.label :password %><br>
 		<%= f.password_field :password %>
-	</div>
-	<div class="field">
-		<%= f.label :password_confirmation %>
+	</p>
+	<p>
+		<%= f.label :password_confirmation %><br>
 		<%= f.password_field :password_confirmation %>
-	</div>
-	<div class="actions"><%= f.submit %></div>
+	</p>
+	<p><%= f.submit 'Create', :type => 'submit' %></p>
 <% end %>

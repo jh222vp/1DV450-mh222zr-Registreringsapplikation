@@ -1,11 +1,9 @@
-<h3>Din API-nyckel är:</h3>
-<p><strong><%= @key.key %></strong></p>
-<p><%= link_to "Delete", users_destroy_path(@current_user.id), method: :delete,  data: {confirm: 'Your API-key and account will be deleted, are you sure you want to proceed?'} %></p>
-
+<h3>Your API-key:</h3>
+<p><span><%= @key.key %></span> <span class="right"><%= link_to "Delete account", users_destroy_path(@current_user.id), method: :delete,  data: {confirm: 'Your account and API-key will be deleted, are you sure you want to proceed?'} %></span></p>
 
 <% if is_admin? %>
-	<h4>All users</h4>
+	<h2>All users</h2>
 	<% @users.each do |user| %>
-		<p><strong><%= user.admin %> <%= user.email %></strong> <%= user.key.key %> <%= link_to "Delete", users_destroy_path(user), method: :delete, data: {confirm: 'This API-key and account will be deleted, are you sure you want to proceed?'} %></p>
+		<strong><%= user.email %></strong> <span class="right"><%= user.key.key %> <%= link_to "Delete account", users_destroy_path(user), method: :delete, data: {confirm: 'This API-key and account will be deleted, are you sure you want to proceed?'} %></span><br>
 	<% end %>
 <% end %>

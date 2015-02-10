@@ -22,13 +22,14 @@ class UsersController < ApplicationController
 	def destroy
 		if is_admin?
 			User.find_by_id(params[:format]).destroy
+			flash[:warning] = "This account and API-key has been deleted."
+			redirect_to key_path
 		else
 			user = User.find_by_id(session[:user_id]).destroy
+			log_out
+			flash[:warning] = "Your account and API-key has been deleted."
+			redirect_to root_path
 		end
-
-		log_out
-		flash[:warning] = "Your account and API-key has been deleted."
-		redirect_to root_path
 	end
 
 	def user_params

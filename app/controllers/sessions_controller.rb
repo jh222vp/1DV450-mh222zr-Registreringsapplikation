@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
 	def new
+		if is_logged_in?
+			redirect_to key_path
+		end
 	end
 
 	def create

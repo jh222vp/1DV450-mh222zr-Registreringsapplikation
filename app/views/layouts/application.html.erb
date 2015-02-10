@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
   <title>Keyholder</title>
@@ -7,8 +7,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <h1>Keyholder</h1>
 
-<%= yield %>
+    <nav>
+      <% if @current_user %>
+        <%= link_to "Log out", logout_path %>
+      <% else %>
+        <%= link_to "Login", root_path %>
+        <%= link_to "Register", new_user_path %>
+      <% end %>
+    </nav>
+  </header>
 
+  <article>
+    <% flash.each do |type, message| %>
+      <div class="alert flash alert-info <%= type %>" role="alert">
+        <%= message %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </article>
+
+  <footer>
+    <p>&copy; Made by <a href="http://wheresmar.co">Marco Hyyryläinen</a></p>
+  </footer>
 </body>
 </html>
