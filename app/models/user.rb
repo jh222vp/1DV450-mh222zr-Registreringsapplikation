@@ -11,5 +11,5 @@ class User < ActiveRecord::Base
 										uniqueness: true, length: { minimum: 6 }
 	validates :password, length: { minimum: 6 }
 
-	has_one :key
+	has_one :key, dependent: :destroy
 end

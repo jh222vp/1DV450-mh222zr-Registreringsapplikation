@@ -1,0 +1,3 @@
+<h3>Din API-nyckel är:</h3>
+<p><strong><%= @key.key %></strong></p>
+<p><%= link_to "Delete", users_destroy_path(@current_user.id), method: :delete,  data: {confirm: 'Your API-key and account will be deleted, are you sure you want to proceed?'}, class: "btn btn-danger"%></p>
