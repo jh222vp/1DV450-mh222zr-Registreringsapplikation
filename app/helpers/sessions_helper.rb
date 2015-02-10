@@ -22,4 +22,8 @@ module SessionsHelper
 			redirect_to root_path
 		end
 	end
+
+	def is_admin?
+		current_user.admin?
+	end
 end
