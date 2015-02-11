@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 	def new
 		if is_logged_in?
+			# Logged in? Then redirect them to the keypage
 			redirect_to key_path
 		end
 	end

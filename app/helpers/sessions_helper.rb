@@ -9,7 +9,7 @@ module SessionsHelper
 	end
 
 	def current_user
-		@current_user ||= User.find_by(id: session[:user_id])
+		@current_user ||= User.find_by_id(session[:user_id])
 	end
 
 	def is_logged_in?
@@ -18,7 +18,7 @@ module SessionsHelper
 
 	def check_user
 		unless is_logged_in?
-			flash[:danger] = "Do log in!"
+			flash[:danger] = "You are not logged in"
 			redirect_to root_path
 		end
 	end

@@ -4,6 +4,7 @@ class KeysController < ApplicationController
 
 	def show
 		if is_admin?
+			# If admin show your key and every users keys
 			@key = @current_user.key
 			@users = User.includes(:key).all
 		else

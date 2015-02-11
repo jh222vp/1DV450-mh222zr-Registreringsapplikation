@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
 	def destroy
 		if is_admin?
+			# Let admin remove any account
 			User.find_by_id(params[:format]).destroy
 			flash[:warning] = "This account and API-key has been deleted."
 			redirect_to key_path
